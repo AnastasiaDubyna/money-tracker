@@ -1,0 +1,16 @@
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 100%;
+  border: 1px solid rgb(235, 235, 239);
+}
+
+.nav-home {
+  margin: 30px auto;
+}
+
+.nav-tab {
+  text-align: center;
+  margin: 10px 0;
+}

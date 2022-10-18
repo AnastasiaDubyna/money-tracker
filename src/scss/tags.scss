@@ -1,0 +1,28 @@
+$green-color: rgb(24, 148, 77);
+$orange-color: rgb(250, 188, 21);
+$brown-color: rgb(104, 47, 46);
+$gray-color: rgb(248, 247, 247);
+
+@mixin tag-colors($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+}
+.green {
+  @include tag-colors($green-color, $gray-color);
+}
+.brown {
+  @include tag-colors($brown-color, $orange-color);
+}
+.orange {
+  @include tag-colors($orange-color, $brown-color);
+}
+
+.tag {
+  border-radius: 6px;
+  padding: 7px 12px;
+}
+.color-circle {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+}

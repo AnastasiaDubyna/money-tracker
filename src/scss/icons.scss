@@ -1,0 +1,24 @@
+$green-color: rgb(24, 148, 77);
+$icon-gray-color: rgb(180, 193, 198);
+
+.material-symbols-outlined {
+  font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 48;
+  &.nav-home {
+    font-size: 42px;
+    color: $green-color;
+  }
+  &.nav-tab, &.add-button {
+    font-size: 30px;
+    color: $icon-gray-color;
+  }
+  &.active {
+    color: $green-color;
+    border-right: 3px solid $green-color;
+  }
+}
+
+
