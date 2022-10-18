@@ -1,70 +1,52 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
-class TagsContainer extends Component {
-    constructor(props) {
-        super(props);
+const TagsContainer = () => {
+    const [isAddButtonClicked, setAddButtonClicked] = useState(false);
+    const [newTagName, setNewTagName] = useState("");
+    const [colors, setColors] = useState(["brown", "green", "orange"]);
+    const [selectedColor, setSelectedColor] = useState("brown");
 
-        this.state = {
-            isAddButtonClicked: false,
-            tagName: "",
-            colors: ["brown", "green", "orange"],
-            selectedColor: "brown"
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleColorSelection = this.handleColorSelection.bind(this);
+    const handleChange = (e) => {
+        setNewTagName(e.target.value);
     }
-    handleChange(e) {
-        this.setState({
-            tagName: e.target.value
-        });
+    const handleClick = () => {
+        setAddButtonClicked(prevState => !prevState);
+        setNewTagName("");
     }
-    handleClick() {
-        this.setState(prevState => ({
-            isAddButtonClicked: !prevState.isAddButtonClicked,
-            tagName: ""
-        }));
-    }
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        this.props.handleTagsAddition(this.state.tagName, this.state.selectedColor);
-        this.handleClick();
+        this.props.handleTagsAddition(newTagName, selectedColor);
+        handleClick();
     }
-    handleColorSelection(e) {
+    const handleColorSelection = (e) => {
         e.preventDefault();
-        this.setState({
-            selectedColor: e.target.name
-        })
+        setSelectedColor(e.target.name);
     }
-    render() {
-        console.log(this.state);
-        if (this.state.isAddButtonClicked) {
-            return (
-                <form className="add-new-tag-form" onSubmit={this.handleSubmit}>
-                    <h3>Tags</h3>
-                    <input name="tagName" placeholder="name" value={this.state.tagName} onChange={this.handleChange} />
-                    <div className="circles-container">
-                        {
-                            this.state.colors.map(color => (
-                                <button name={color.toString()} className={"color-circle " + color} onClick={this.handleColorSelection} />
-                            ))
-                        }
-                    </div>
-                    <button type="submit">Add</button>
-                </form>
-            )
-        } else {
-            return(
-                <div className="tags-container">
-                    {Object.keys(this.props.tags).map(
-                        tag => <button key={tag} className={"tag " + this.props.tags[tag]} onClick={this.props.handleTagsSelection} name={tag}>{tag}</button>
-                    )}
-                    <button className="material-symbols-outlined add-button" onClick={this.handleClick}>add_box</button>
+
+    if (isAddButtonClicked) {
+        return (
+            <form className="add-new-tag-form" onSubmit={handleSubmit}>
+                <h3>Tags</h3>
+                <input name="tagName" placeholder="name" value={newTagName} onChange={handleChange} />
+                <div className="circles-container">
+                    {
+                        colors.map(color => (
+                            <button name={color.toString()} className={"color-circle " + color} onClick={handleColorSelection} />
+                        ))
+                    }
                 </div>
-                )
-        }
+                <button type="submit">Add</button>
+            </form>
+        )
+    } else {
+        return(
+            <div className="tags-container">
+                {Object.keys(this.props.tags).map(
+                    tag => <button key={tag} className={"tag " + this.props.tags[tag]} onClick={this.props.handleTagsSelection} name={tag}>{tag}</button>
+                )}
+                <button className="material-symbols-outlined add-button" onClick={handleClick}>add_box</button>
+            </div>
+        )
     }
 }
 
