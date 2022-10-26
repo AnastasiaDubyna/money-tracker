@@ -1,0 +1,29 @@
+.transaction-page-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  a {
+    justify-self: flex-end;
+  }
+}
+
+.transaction-record {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .amount {
+    flex: 1;
+  }
+  .type {
+    flex: 2;
+    display: flex;
+  }
+  .tags {
+    flex: 6;
+    p {
+      display: inline-block;
+    }
+  }
+}

@@ -19,6 +19,15 @@ $icon-gray-color: rgb(180, 193, 198);
     color: $green-color;
     border-right: 3px solid $green-color;
   }
+  &.east {
+    color: #910303;
+  }
+  &.west {
+    color: #0b670b;
+  }
+  &.sync {
+    color: #103e72;
+  }
 }
 
 

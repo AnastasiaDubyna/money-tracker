@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class TitleBar extends Component {
-    render() {
-        return (
-            <div className="title-bar">
-                <h1 className="title">{this.props.title}</h1>
-            </div>
-        );
-    }
-}
+const TitleBar = (props) => {
+    return (
+        <div className="title-bar">
+            <h1 className="title">{props.title}</h1>
+        </div>
+    );
+};
+
 
 export default TitleBar;

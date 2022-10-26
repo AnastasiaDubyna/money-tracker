@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-const TagsContainer = () => {
+const TagsContainer = (props) => {
     const [isAddButtonClicked, setAddButtonClicked] = useState(false);
     const [newTagName, setNewTagName] = useState("");
-    const [colors, setColors] = useState(["brown", "green", "orange"]);
+    const [colors] = useState(["brown", "green", "orange"]);
     const [selectedColor, setSelectedColor] = useState("brown");
 
     const handleChange = (e) => {
@@ -15,7 +15,7 @@ const TagsContainer = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        this.props.handleTagsAddition(newTagName, selectedColor);
+        props.handleTagsAddition(newTagName, selectedColor);
         handleClick();
     }
     const handleColorSelection = (e) => {
@@ -41,8 +41,8 @@ const TagsContainer = () => {
     } else {
         return(
             <div className="tags-container">
-                {Object.keys(this.props.tags).map(
-                    tag => <button key={tag} className={"tag " + this.props.tags[tag]} onClick={this.props.handleTagsSelection} name={tag}>{tag}</button>
+                {Object.keys(props.tags).map(
+                    tag => <button key={tag} className={"tag " + props.tags[tag]} onClick={props.handleTagsSelection} name={tag}>{tag}</button>
                 )}
                 <button className="material-symbols-outlined add-button" onClick={handleClick}>add_box</button>
             </div>

@@ -2,12 +2,12 @@ import React from 'react';
 import NavigationBar from "./NavigationBar";
 import TitleBar from "./TitleBar";
 
-const PageBase = () => {
+const PageBase = (props) => {
     return (
         <div className="page-base">
-            <NavigationBar active={this.props.active}/>
-            <TitleBar title={this.props.title} />
-            {this.props.children}
+            <NavigationBar active={props.active}/>
+            <TitleBar title={props.title} />
+            {props.children}
         </div>
     )
 }

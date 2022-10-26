@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
     const tabs = {
         "/": "leaderboard",
         "/transactions": "sync_alt"
@@ -10,7 +10,7 @@ const NavigationBar = () => {
         <div className="nav-bar">
             <Link to="/" className="material-symbols-outlined nav-home"> account_balance_wallet </Link>
             {Object.keys(tabs).map(key => {
-                const className = "material-symbols-outlined nav-tab " + (key === "/" + this.props.active ? "active" : "");
+                const className = "material-symbols-outlined nav-tab " + (key === "/" + props.active ? "active" : "");
                 return <Link to={key} className={className} key={key}> {tabs[key]} </Link>}
             )}
         </div>

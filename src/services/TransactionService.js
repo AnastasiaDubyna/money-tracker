@@ -3,8 +3,21 @@ import axios from "axios";
 const BASE_URL = "http://localhost:8080/api/v1/transaction";
 
 class TransactionService {
+
     getAllTransactions() {
-        return axios.get(BASE_URL);
+        const url = `${BASE_URL}/all`;
+        return axios.get(url);
+        // return dataDummy;
+    }
+
+    getExpensesByTags(startDate, endDate) {
+        const url = `${BASE_URL}/getByTags`;
+        return axios.get(url, {
+            params: {
+                startDate,
+                endDate
+            }
+        })
     }
 
     addTransaction(type, amount, date, tags) {
@@ -27,3 +40,4 @@ class TransactionService {
 }
 
 export default new TransactionService();
+

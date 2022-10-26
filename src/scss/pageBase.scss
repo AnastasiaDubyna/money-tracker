@@ -3,7 +3,7 @@
 $font: 'Poppins', sans-serif;
 
 $bg-white-color: rgb(253,253,254);
-$bg-gray-color: rgb(248, 247, 247);
+$bg-gray-color: rgb(229 229 229);
 $green-color: rgb(24, 148, 77);
 $orange-color: rgb(250, 188, 21);
 $brown-color: rgb(104, 47, 46);
@@ -72,10 +72,12 @@ a {
   -webkit-box-shadow: 1px 1px 14px -10px rgba(66, 68, 90, 0.27);
   -moz-box-shadow: 1px 1px 14px -10px rgba(66, 68, 90, 0.27);
   box-shadow: 1px 1px 14px -10px rgba(66, 68, 90, 0.27);
+  margin: auto auto;
+  width: 800px;
+  padding: 57px;
 
-  &.add-new-container {
-    width: 800px;
-    margin: auto auto;
-    padding: 57px;
-  }
 }
+
+
+
+

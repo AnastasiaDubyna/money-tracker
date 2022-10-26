@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/v1/file";
+const BASE_URL = "http://localhost:8080/api/v1/transaction/file";
 
 class FileService {
     uploadFile(file) {
