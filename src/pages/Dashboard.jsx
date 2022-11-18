@@ -5,10 +5,16 @@ import TransactionService from "../services/TransactionService";
 const Dashboard = () => {
 
     useEffect(() => {
-        TransactionService.getExpensesByTags(new Date(), new Date())
-            .then(res => {
-                console.log(res);
-            })
+        const dataDummy = {
+            travel: 500,
+            groceries: 1000,
+            transport: 100,
+            rent: 2000
+        }
+        // TransactionService.getExpensesByTags(new Date(), new Date())
+        //     .then(res => {
+        //         console.log(res);
+        //     })
     }, []);
 
     return (

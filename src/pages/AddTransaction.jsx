@@ -5,9 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import TagsContainer from "../components/TagsContainer";
 import TransactionService from "../services/TransactionService";
 import {useHistory} from "react-router-dom";
+import AddNewTagForm from "../components/AddNewTagForm";
 
 const AddTransaction = () => {
     const [transactionType, setTransactionType] = useState("expense");
+    const [isAddTagButtonClicked, setAddTagButtonClicked] = useState(false);
     const [amount, setAmount] = useState(0);
     const [date, setDate] = useState(new Date());
     const [tags, setTags] = useState({
@@ -47,6 +49,9 @@ const AddTransaction = () => {
             tagName: color
         }))
     }
+    const toggleAddTagButton = () => {
+        setAddTagButtonClicked(prevState => !prevState);
+    }
 
     return (
         <PageBase title="Transactions" active="transactions">
@@ -61,11 +66,11 @@ const AddTransaction = () => {
                     <DatePicker selected={date} onChange={handleDate} />
                     <button type="submit">Add transaction</button>
                 </form>
-                <TagsContainer
-                    handleTagsAddition = {handleTagsAddition}
-                    handleTagsSelection = {handleTagsSelection}
-                    tags = {tags}
-                />
+                {isAddTagButtonClicked
+                    ? <AddNewTagForm handleTagsAddition={handleTagsAddition} toggleAddTagButton={toggleAddTagButton}/>
+                    : <TagsContainer handleTagsSelection = {handleTagsSelection} toggleAddTagButton={toggleAddTagButton} tags = {tags}/>
+                }
+
             </div>
         </PageBase>
     );
